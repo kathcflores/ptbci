@@ -1,24 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import Sidebar from "./pages/global/Sidebar";
+import Dashboard from "./pages/dashboard";
+import Patient_Info from "./pages/patient_info";
+import Symptoms from "./pages/symptoms";
+import Contacts from "./pages/contacts";
+import Bar from "./pages/bar";
+import Form from "./pages/form";
+import Line from "./pages/line";
+import Pie from "./pages/pie";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { ColorModeContext, useMode } from "./theme";
+import Calendar from "./pages/calendar";
 
 function App() {
+  const [theme, colorMode] = useMode();
+  const [isSidebar, setIsSidebar] = useState(true);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ColorModeContext.Provider value={colorMode}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <div className="app">
+          <Sidebar isSidebar={isSidebar} />
+          <main className="content">
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/patient_info" element={<Patient_Info />} />
+              <Route path="/contacts" element={<Contacts />} />
+              <Route path="/symptoms" element={<Symptoms />} />
+              <Route path="/form" element={<Form />} />
+              <Route path="/bar" element={<Bar />} />
+              <Route path="/pie" element={<Pie />} />
+              <Route path="/line" element={<Line />} />
+              <Route path="/calendar" element={<Calendar />} />
+            </Routes>
+          </main>
+        </div>
+      </ThemeProvider>
+    </ColorModeContext.Provider>
   );
 }
 
