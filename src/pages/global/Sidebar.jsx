@@ -1,7 +1,9 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { auth } from '../../firebase.config';
+import { Link, useNavigate } from "react-router-dom";
+import { signOut } from 'firebase/auth';
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
-import { Box, IconButton, Typography, useTheme } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Box, IconButton, Typography, useTheme, Button } from "@mui/material";
 import "react-pro-sidebar/dist/css/styles.css";
 import { tokens } from "../../theme";
 
@@ -11,7 +13,6 @@ import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import LogoutIcon from '@mui/icons-material/Logout';
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
 import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
-import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
 import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutlined";
@@ -42,6 +43,20 @@ const Sidebar = () => {
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
+
+  const user = JSON.parse(localStorage.getItem('user'));
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      navigate("/login");
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
     <Box
@@ -174,13 +189,8 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
 
-            <Item
-              title="Logout"
-              to="/logout"
-              icon={<LogoutIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
+           <Button onClick={handleLogout}>LOGOUT</Button>
+            
           </Box>
         </Menu>
       </ProSidebar>

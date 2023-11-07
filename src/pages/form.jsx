@@ -1,6 +1,10 @@
-import { Box, Container, Button, TextField, MenuItem, InputLabel, Select, Grid } from "@mui/material";
-import { Formik } from "formik";
 import * as yup from "yup";
+import * as React from 'react';
+
+import { Box, Container, Button, TextField, MenuItem, InputLabel, Select, Grid, InputAdornment, IconButton } from "@mui/material";
+import { Formik } from "formik";
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../components/Header";
 
@@ -9,6 +13,13 @@ const Form = () => {
 
   const handleFormSubmit = (values) => {
     console.log(values);
+  };
+
+  //password
+  const [showPassword, setShowPassword] = React.useState(false);
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
   };
 
   return (
@@ -84,6 +95,32 @@ const Form = () => {
                 helperText={touched.email && errors.email}
                 sx={{ gridColumn: "span 4" }}
               />
+              <TextField
+                fullWidth
+                variant="filled"
+                type={showPassword ? 'text' : 'password'}
+                label="Password"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.password}
+                name="password"
+                error={!!touched.password && !!errors.password}
+                helperText={touched.password && errors.password}
+                sx={{ gridColumn: "span 4" }}/>
+
+              <TextField
+                fullWidth
+                variant="filled"
+                type={showPassword ? 'text' : 'password'}
+                label="Confirm Password"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.cpassword}
+                name="cpassword"
+                error={!!touched.cpassword && !!errors.cpassword}
+                helperText={touched.cpassword && errors.cpassword}
+                sx={{ gridColumn: "span 4" }}/>
+
               {/* <TextField
                 fullWidth
                 variant="filled"
@@ -150,6 +187,17 @@ const checkoutSchema = yup.object().shape({
   firstName: yup.string().required("required"),
   lastName: yup.string().required("required"),
   email: yup.string().email("invalid email").required("required"),
+  password: yup
+  .string()
+  .required("required")
+  .matches(
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+    "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
+  ),
+  cpassword: yup
+  .string()
+  .required("required")
+  .oneOf([yup.ref("password"), null], "Passwords must match")
   // contact: yup
   //   .string()
   //   .matches(phoneRegExp, "Phone number is not valid")
@@ -160,6 +208,8 @@ const initialValues = {
   firstName: "",
   lastName: "",
   email: "",
+  password: "",
+  cpassword: ""
   // contact: "",
   // user_type: "",
 };
