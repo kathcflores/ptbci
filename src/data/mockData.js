@@ -1281,3 +1281,41 @@ export const mockGeographyData = [
     value: 171135,
   },
 ];
+  export const mockDataPatients = [ 
+    {
+      id: 1,
+      patientName: "John Doe",
+      treatmentStartDate: "2023-01-01",
+      treatmentEndDate: "2023-06-01",
+      treatmentFacility: "St. Mary's Hospital",
+      reasonForPreviousTreatment: "New TB Case",
+      treatmentOutcome: "Completed Treatment",
+      medicationsUsed: "Isoniazid",
+      adherenceToPreviousTreatment: "Good",
+      adverseReactions: "None observed"
+    },
+    {
+      id: 2,
+      patientName: 'Jane Smith',
+      treatmentStartDate: '2022-07-15',
+      treatmentEndDate: '2023-01-15',
+      treatmentFacility: 'City Clinic',
+      reasonForPreviousTreatment: 'New TB Case',
+      treatmentOutcome: 'Cured',
+      medicationsUsed: 'Isoniazid',
+      adherenceToPreviousTreatment: 'Fair',
+      adverseReactions: 'Mild rash, fever',
+    },
+    {
+      id: 3,
+      patientName: 'Michael Johnson',
+      treatmentStartDate: '2023-02-20',
+      treatmentEndDate: '2023-08-20',
+      treatmentFacility: 'Regional Medical Center',
+      reasonForPreviousTreatment: 'Treatment Failure',
+      treatmentOutcome: 'Treatment Failure',
+      medicationsUsed: 'Ethambutol',
+      adherenceToPreviousTreatment: 'Poor',
+      adverseReactions: 'Vision impairment, joint pain',
+    },
+  ];

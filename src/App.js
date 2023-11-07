@@ -12,7 +12,9 @@ import Pie from "./pages/pie";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 import Calendar from "./pages/calendar";
-
+import PatientGenForm from "./pages/patientgenform";
+import Treatment_History from "./pages/treatmenthistory";
+import ReferralForm from "./pages/referralform";
 function App() {
   const [theme, colorMode] = useMode();
   const [isSidebar, setIsSidebar] = useState(true);
@@ -34,6 +36,9 @@ function App() {
               <Route path="/pie" element={<Pie />} />
               <Route path="/line" element={<Line />} />
               <Route path="/calendar" element={<Calendar />} />
+              <Route path="/patientgenform" element={<PatientGenForm />} />
+              <Route path="/treatmenthistory" element={<Treatment_History />} />
+              <Route path="/referralform" element={<ReferralForm />} />
             </Routes>
           </main>
         </div>

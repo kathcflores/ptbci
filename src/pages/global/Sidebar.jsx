@@ -17,6 +17,8 @@ import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutlined";
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
+import HistoryIcon from "@mui/icons-material/History";
+import { EmojiPeople } from "@mui/icons-material";
 
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
@@ -105,26 +107,51 @@ const Sidebar = () => {
               color={colors.grey[300]}
               sx={{ m: "15px 0 5px 20px" }}
             >
-              Data
+              Patients
             </Typography>
             <Item
-              title="Patient Information"
+              title="General Information"
               to="/patient_info"
-              icon={<PeopleOutlinedIcon />}
+              icon={<PeopleOutlinedIcon />} 
               selected={selected}
               setSelected={setSelected}
             />
             <Item
               title="Contact Tracing"
               to="/contacts"
-              icon={<ContactsOutlinedIcon />}
+              icon={<ContactsOutlinedIcon />} 
               selected={selected}
               setSelected={setSelected}
             />
+
+             <Item
+              title="Medical History"
+              to="/medhistory"
+              icon={<HistoryIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+
             <Item
-              title="Symptoms"
+              title="Symptoms Review"
               to="/symptoms"
               icon={<ReceiptOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+
+            <Item
+              title="Treatment History"
+              to="/treatmenthistory"
+              icon={<EmojiPeople />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+
+            <Item
+              title="Referral Form"
+              to="/referralform"
+              icon={<EmojiPeople />}
               selected={selected}
               setSelected={setSelected}
             />
@@ -141,6 +168,13 @@ const Sidebar = () => {
               title="Calendar"
               to="/calendar"
               icon={<CalendarTodayOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Patient Gen Info"
+              to="/patientgenform"
+              icon={<PersonOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
