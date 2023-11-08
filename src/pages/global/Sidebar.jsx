@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { auth } from '../../firebase.config';
+import { auth } from '../../config/firestore';
 import { Link, useNavigate } from "react-router-dom";
 import { signOut } from 'firebase/auth';
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
@@ -18,7 +18,7 @@ import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutlined";
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
-
+import BuildIcon from '@mui/icons-material/Build';
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -152,6 +152,14 @@ const Sidebar = () => {
               Pages
             </Typography>
             
+            <Item
+              title="Test"
+              to="/test"
+              icon={<BuildIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+
             <Item
               title="Calendar"
               to="/calendar"

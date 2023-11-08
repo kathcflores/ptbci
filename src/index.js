@@ -22,6 +22,9 @@ import Line from "./pages/line";
 import Pie from "./pages/pie";
 import Calendar from "./pages/calendar";
 
+import Test from "./pages/test/test";
+import Add from "./pages/test/add"
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
@@ -31,6 +34,7 @@ const router = createBrowserRouter(
         <Route path="/" element={ <Dashboard /> } />
       </Route>
         <Route path="/form" element={<Form />} />
+        <Route path="/add" element={<Add />} />
         <Route path="/patient_info" element={<Patient_Info />} />
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/symptoms" element={<Symptoms />} />
@@ -39,6 +43,8 @@ const router = createBrowserRouter(
         <Route path="/pie" element={<Pie />} />
         <Route path="/line" element={<Line />} />
         <Route path="/calendar" element={<Calendar />} />
+
+        <Route path="/test" element={<Test />} />
     </Route>
   )
 );

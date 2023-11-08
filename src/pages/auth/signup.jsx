@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { auth } from '../../firebase.config';
+import { auth } from '../../config/firestore';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -41,7 +41,7 @@ const Signup = () => {
     justifyContent="center"
     sx={{ minHeight: '100vh' }}
   >
-      <Box m="20px">
+      <Box m="20px" width="300px">
       <Header title="SIGN UP" subtitle="Register User" />
 
       <Formik

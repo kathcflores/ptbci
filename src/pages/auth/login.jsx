@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
-import { auth } from '../../firebase.config';
+import { auth } from '../../config/firestore';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { Link, useNavigate } from 'react-router-dom';
 
 import * as yup from "yup";
 import { Box, Button, TextField, Grid } from "@mui/material";
-import { Formik } from "formik";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/Header";
 
@@ -38,16 +37,11 @@ const Login = () => {
     direction="column"
     alignItems="center"
     justifyContent="center"
-    sx={{ minHeight: '100vh' }}
+    sx={{ minHeight: '100vh'}}
   >
-      <Box m="20px">
+      <Box m="20px" width="300px">
       <Header title="LOG IN" subtitle="Login User" />
 
-      <Formik
-        onSubmit={handleSubmit}
-        // validationSchema={loginSchema}
-        className='login-form'
-      >
           <form onSubmit={handleSubmit}>
             <Box
               display="grid"
@@ -88,7 +82,6 @@ const Login = () => {
               </Button>
             </Box>
           </form>
-      </Formik>
       <p>Don't have an account?   <Link to={"/signup"}>{"Create Account"}</Link></p>
     </Box>
     </Grid>
